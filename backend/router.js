@@ -21,6 +21,17 @@ router.get("/people", async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
+
+// get random person
+router.get("/people/random", async (req, res) => {
+    try {
+        const people = await People.aggregate([{ $sample: { size: 1 } }]);
+        return res.status(200).json({ people });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
+
 // get people by name
 router.get("/people/:name", async (req, res) => {
     try {
@@ -31,5 +42,4 @@ router.get("/people/:name", async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
-
 export default router;
