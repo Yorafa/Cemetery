@@ -1,5 +1,8 @@
-import Header from "./header";
+import Header from "./components/header";
 
 export default function Home() {
-    return <Header />;
+    return <>
+        <Header />
+        <img src="/tombstone.png"/>
+    </>;
 }

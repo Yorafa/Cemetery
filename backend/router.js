@@ -25,7 +25,7 @@ router.get("/people", async (req, res) => {
 // get random person
 router.get("/people/random", async (req, res) => {
     try {
-        const people = await People.aggregate([{ $sample: { size: 1 } }]);
+        const people = await People.aggregate([{ $sample: { size: 3 } }]);
         return res.status(200).json({ people });
     } catch (error) {
         return res.status(500).json({ error: error.message });

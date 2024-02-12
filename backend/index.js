@@ -8,7 +8,8 @@ import cors from "cors";
 const app = express();
 app.use(express.json()); // parse json bodies
 app.use(router); // use the router
-app.use(cors(CorsOptions)); // use cors
+// app.use(cors(CorsOptions)); // use cors
+app.use(cors()); // allow all origins
 
 // connect to the database
 mongoose.connect(MONGO_URI).then(() => {

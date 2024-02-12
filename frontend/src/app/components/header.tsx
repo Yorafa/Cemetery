@@ -6,11 +6,40 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Tombstones from './tombstone';
+import axios from 'axios';
+
 
 export default function Header() {
     const [quote, setQuote] = React.useState('哈哈，我死啦 ^q^');
+    const [people, setPeople] = React.useState([]);
+    const [searchName, setSearchName] = React.useState('');
 
-    
+    const getRandomPeople = async () => {
+        try {
+            const response = await axios.get('http://localhost:8000/people/random');
+            setPeople(response.data.people);
+            const randomNum = Math.floor(Math.random() * response.data.people.length);
+            const randomQuote = response.data.people[randomNum].epitaph;
+            setQuote(randomQuote);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const getPeopleByName = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8000/people/${searchName}`);
+            setPeople(response.data.people);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    React.useEffect(() => {
+        getRandomPeople();
+    }, []);
+
     return (
         <Box
             id="hero"
@@ -51,14 +80,19 @@ export default function Header() {
                             size="small"
                             variant="outlined"
                             aria-label="Search your name"
-                            placeholder="Yorafa"
+                            value={searchName}
+                            onChange={(e) => setSearchName(e.target.value)}
                         />
-                        <Button variant="contained" color="primary">
+                        <Button variant="contained" color="primary" onClick={getPeopleByName}>
                             Search
+                        </Button>
+                        <Button variant="contained" color="primary" onClick={getRandomPeople}>
+                            Shuffle
                         </Button>
                     </Stack>
                 </Stack>
             </Container>
+            <Tombstones people={people} />
         </Box>
     );
 }
