@@ -8,12 +8,14 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Tombstones from './tombstone';
 import axios from 'axios';
+import SubmitDialog from './submitDialog';
 
 
 export default function Header() {
     const [quote, setQuote] = React.useState('哈哈，我死啦 ^q^');
     const [people, setPeople] = React.useState([]);
     const [searchName, setSearchName] = React.useState('');
+    const [open, setOpen] = React.useState(false);
 
     const getRandomPeople = async () => {
         try {
@@ -34,6 +36,10 @@ export default function Header() {
         } catch (error) {
             console.error(error);
         }
+    }
+
+    const handleClose = () => {
+        setOpen(false);
     }
 
     React.useEffect(() => {
@@ -89,9 +95,16 @@ export default function Header() {
                         <Button variant="contained" color="primary" onClick={getRandomPeople}>
                             Shuffle
                         </Button>
+                        <Button variant="contained" color="primary" onClick={() => setOpen(true)}>
+                            Create a new one
+                        </Button>
                     </Stack>
                 </Stack>
             </Container>
+            <SubmitDialog 
+                open={open}
+                onClose={handleClose}
+            />
             <Tombstones people={people} />
         </Box>
     );
