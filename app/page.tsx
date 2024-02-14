@@ -1,8 +1,8 @@
 import Header from "./components/header";
-
+import { BasePath } from "../config";
 export default function Home() {
     return <>
         <Header />
-        <img src="/Cemetery/tombstone.png"/>
+        <img src={BasePath + "/tombstone.png"}/>
     </>;
 }

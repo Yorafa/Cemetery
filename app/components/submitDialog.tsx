@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dialog, Box, Grid, TextField, Button } from '@mui/material';
 import axios from 'axios';
+import { BackendPath } from '../../config';
 
 interface SubmitDialogProps {
     open: boolean;
@@ -15,7 +16,7 @@ export default function SubmitDialog(props: SubmitDialogProps) {
 
     const postPeople = async (data: any) => {
         try {
-            const response = await axios.post('http://localhost:8000/people', data);
+            const response = await axios.post(BackendPath + '/people', data);
             console.log(response);
         } catch (error) {
             console.error(error);

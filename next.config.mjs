@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
     output: 'export',
-    basePath: '/Cemetery',
+    basePath: "/Cemetery",
     images: {
         unoptimized: true,
     }

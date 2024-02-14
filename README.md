@@ -14,7 +14,10 @@ pnpm install
 bun install
 ```
 
-Then, run the development server:
+Before running the server, you might need to change `next.config.mjs` since I modified `next.config.mjs` follows the instruction from [here](https://github.com/gregrickaby/nextjs-github-pages) in order to deploy this frontend part on Github Pages.
+- notice that the path of all static files also need to be changed based on the `next.config.mjs` file.
+
+Use following script run the development server:
 
 ```bash
 npm run dev
@@ -32,8 +35,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-To deploy frontend on Github Pages, I modified `next.config.mjs` which follows the instruction from [here](https://github.com/gregrickaby/nextjs-github-pages).
-- notice that the path of all static files also need to be changed based on the `next.config.mjs` file.
+
 
 ## Learn More
 
