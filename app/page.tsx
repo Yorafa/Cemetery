@@ -3,6 +3,6 @@ import Header from "./components/header";
 export default function Home() {
     return <>
         <Header />
-        <img src="/people/tombstone.png"/>
+        <img src="/Cemetery/tombstone.png"/>
     </>;
 }
