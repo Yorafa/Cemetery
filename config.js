@@ -1,6 +1,6 @@
-export const PORT = 8000;
+export const PORT = 80;
 
-export const MONGO_URI = "mongodb://localhost:27017/mongodb";
+export const MONGO_URI = "mongodb+srv://yorafa:sgFBTsgTwusLPCWp@cluster0.c2kr52a.mongodb.net/?retryWrites=true&w=majority";
 
 export const CorsOptions = {
     origin: "https://home.yorafa.com",
