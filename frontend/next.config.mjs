@@ -4,7 +4,7 @@ const nextConfig = {
         return [
             {
                 source: '/api/:path*',
-                destination: 'https://cemetery-6fef965af345.herokuapp.com*',
+                destination: 'https://cemetery-6fef965af345.herokuapp.com/:path*',
             },
         ];
     }
