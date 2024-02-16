@@ -21,6 +21,9 @@ export default function Header() {
         try {
             const response = await axios.get("/api/random");
             setPeople(response.data.people);
+            if (response.data.people.length === 0) {
+                return;
+            }
             const randomNum = Math.floor(Math.random() * response.data.people.length);
             const randomQuote = response.data.people[randomNum].epitaph;
             setQuote(randomQuote);
