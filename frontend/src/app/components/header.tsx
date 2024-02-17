@@ -20,6 +20,7 @@ export default function Header() {
     const getRandomPeople = async () => {
         try {
             const response = await axios.get("/api/random");
+            console.log("random people: ", response.data.people);
             setPeople(response.data.people);
             if (response.data.people.length === 0) {
                 return;
