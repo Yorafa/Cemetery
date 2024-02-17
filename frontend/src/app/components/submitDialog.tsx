@@ -80,6 +80,7 @@ export default function SubmitDialog(props: SubmitDialogProps) {
                             autoFocus
                             value={bornDate}
                             onChange={(e) => setBornDate(e.target.value)}
+                            helperText="yyyy-mm-dd"
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -93,6 +94,7 @@ export default function SubmitDialog(props: SubmitDialogProps) {
                             autoFocus
                             value={diedDate}
                             onChange={(e) => setDiedDate(e.target.value)}
+                            helperText="yyyy-mm-dd"
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -106,6 +108,7 @@ export default function SubmitDialog(props: SubmitDialogProps) {
                             autoFocus
                             value={epitaph}
                             onChange={(e) => setEpitaph(e.target.value)}
+                            helperText="Max 100 characters"
                         />
                     </Grid>
                 </Grid>
