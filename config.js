@@ -1,4 +1,4 @@
-export const PORT = 80;
+export const PORT = 3000;
 
 export const MONGO_URI = "mongodb+srv://yorafa:sgFBTsgTwusLPCWp@cluster0.c2kr52a.mongodb.net/?retryWrites=true&w=majority";
 
