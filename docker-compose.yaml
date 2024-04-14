@@ -2,10 +2,14 @@
 version: '3'
 services:
   backend:
-    image: yorafa/cemetery-backend
+    image: cemetery:0.71
+    ports:
+      - 8000:3000
 
   mongo:
-      image: mongo:4.4.16 # since I have this version installed on my machine
-      restart: always
-      environment:
-        TZ: 'America/Toronto'
+    image: mongo:4.4.16 # since I have this version installed on my machine
+    restart: always
+    environment:
+      TZ: 'America/Toronto'
+    ports:
+      - 27017:27017
