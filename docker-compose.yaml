@@ -1,0 +1,5 @@
+# example of docker-compose.yaml
+version: '3'
+services:
+  backend:
+    image: yorafa/cemetery-backend
