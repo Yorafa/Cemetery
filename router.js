@@ -3,10 +3,36 @@ import { People } from "./models/peopleModel.js";
 
 const router = express.Router();
 
+/**
+ * Returns a hash code from a string
+ * @param  {String} str The string to hash.
+ * @return {Number}    A 32bit integer
+ */
+function hashCode(str) {
+    let hash = 0;
+    for (let i = 0, len = str.length; i < len; i++) {
+        let chr = str.charCodeAt(i);
+        hash = (hash << 5) - hash + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+}
+
+function hashId(data) {
+    return hashCode(JSON.stringify(data));
+}
+
 // routes 
 router.post("/people", async (req, res) => {
-    try{
-        const people = await People.create(req.body);
+    try {
+        const data = req.body;
+        const id = hashId(data);
+        // find if exist same data
+        const existingItem = await People.findOne({ id: id });
+        if (existingItem) {
+            return res.status(400).json({ error: 'Item with the same name already exists.' });
+        }
+        const people = await People.create({ ...data, id });
         return res.status(201).json({ people });
     } catch (error) {
         return res.status(500).json({ error: error.message });

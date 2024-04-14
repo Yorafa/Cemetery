@@ -1,6 +1,12 @@
 import mongoose from 'mongoose';
 
 const peopleSchema = new mongoose.Schema({
+    id: {
+        // number type
+        type: Number, 
+        required: true,
+        unique: true,
+    },
     name: {
         type: String,
         required: true,

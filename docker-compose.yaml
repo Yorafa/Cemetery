@@ -3,3 +3,9 @@ version: '3'
 services:
   backend:
     image: yorafa/cemetery-backend
+
+  mongo:
+      image: mongo:4.4.16 # since I have this version installed on my machine
+      restart: always
+      environment:
+        TZ: 'America/Toronto'
