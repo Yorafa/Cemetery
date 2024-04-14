@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import Tombstones from './tombstone';
 import axios from 'axios';
 import SubmitDialog from './submitDialog';
-import { BackendPath } from '../../config';
 
 
 export default function Header() {
@@ -20,7 +19,7 @@ export default function Header() {
 
     const getRandomPeople = async () => {
         try {
-            const response = await axios.get(BackendPath + '/people/random');
+            const response = await axios.get('api/people/random');
             setPeople(response.data.people);
             const randomNum = Math.floor(Math.random() * response.data.people.length);
             const randomQuote = response.data.people[randomNum].epitaph;
@@ -32,7 +31,7 @@ export default function Header() {
 
     const getPeopleByName = async () => {
         try {
-            const response = await axios.get(BackendPath + `/people/${searchName}`);
+            const response = await axios.get(`api/people/${searchName}`);
             setPeople(response.data.people);
         } catch (error) {
             console.error(error);
