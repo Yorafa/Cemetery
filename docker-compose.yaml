@@ -1,10 +1,12 @@
 # example of docker-compose.yaml
-version: '3'
+version: '3.8'
 services:
   backend:
-    image: cemetery:0.71
+    image: cemetery:test
     ports:
-      - 8000:3000
+      - 3000:3000
+    volumes:
+      - ./images:/images 
 
   mongo:
     image: mongo:4.4.16 # since I have this version installed on my machine

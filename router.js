@@ -1,5 +1,7 @@
 import express from "express";
 import { People } from "./models/peopleModel.js";
+import fs from "fs";
+import path from "path";
 
 const router = express.Router();
 
@@ -68,4 +70,17 @@ router.get("/people/:name", async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
+
+// self use to random get image
+router.get("/image", async (req, res) => {
+    try {
+        const imagesDir = path.join(path.dirname(new URL(import.meta.url).pathname), "images");
+        const images = fs.readdirSync(imagesDir);
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+        res.sendFile(path.join(imagesDir, randomImage));
+    }catch (error) {
+        return res.status(500).json({ error: 'No images found' });
+    }
+});
+
 export default router;
